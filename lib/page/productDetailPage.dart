@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:provider_shopping_test/page/basketPage.dart';
 import 'package:provider_shopping_test/store/myStore.dart';
 
 class ProductDetailPage extends StatefulWidget {
@@ -15,7 +16,19 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
       appBar: AppBar(
         title: Text("Product Details"),
         actions: [
-          Text(store.getBasketQty().toString()),
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (BuildContext context) => BasketPage(),
+                ),
+              );
+            },
+            child: Text(
+              store.getBasketQty().toString(),
+            ),
+          ),
         ],
       ),
       body: Align(
